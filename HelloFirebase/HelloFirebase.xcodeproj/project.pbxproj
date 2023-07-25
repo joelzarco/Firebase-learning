@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		951042592A6F49DA008059D0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951042582A6F49DA008059D0 /* Task.swift */; };
 		95570A672A6DE2200048481B /* HelloFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95570A662A6DE2200048481B /* HelloFirebaseApp.swift */; };
 		95570A692A6DE2200048481B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95570A682A6DE2200048481B /* ContentView.swift */; };
 		95570A6B2A6DE2210048481B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95570A6A2A6DE2210048481B /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		823D1A64269EFD9B54097250 /* Pods_HelloFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		951042582A6F49DA008059D0 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		95570A632A6DE2200048481B /* HelloFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95570A662A6DE2200048481B /* HelloFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloFirebaseApp.swift; sourceTree = "<group>"; };
 		95570A682A6DE2200048481B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		951042572A6F49C2008059D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951042582A6F49DA008059D0 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		95570A5A2A6DE2200048481B = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 			children = (
 				95570A662A6DE2200048481B /* HelloFirebaseApp.swift */,
 				95570A682A6DE2200048481B /* ContentView.swift */,
+				951042572A6F49C2008059D0 /* Models */,
 				95570A742A6DE3150048481B /* GoogleService-Info.plist */,
 				95570A6A2A6DE2210048481B /* Assets.xcassets */,
 				95570A6C2A6DE2210048481B /* Preview Content */,
@@ -91,7 +102,6 @@
 				F493C572E211DBD76E0C0EE1 /* Pods-HelloFirebase.debug.xcconfig */,
 				B5615166C4C18EDFE065476B /* Pods-HelloFirebase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -211,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95570A692A6DE2200048481B /* ContentView.swift in Sources */,
+				951042592A6F49DA008059D0 /* Task.swift in Sources */,
 				95570A672A6DE2200048481B /* HelloFirebaseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
