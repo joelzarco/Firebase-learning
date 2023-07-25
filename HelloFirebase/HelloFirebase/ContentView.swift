@@ -24,8 +24,11 @@ struct ContentView: View {
                 let task = Task(title: title)
                 saveTask(task: task)
             } // bttn
-            List(tasks, id: \.title){ tsk in
-                Text(tsk.title)
+            List{
+                ForEach(tasks, id: \.title) { tsk in
+                    Text(tsk.title)
+                }
+                .onDelete(perform: deleteTask)
             }
         } // vs
         .padding()
@@ -57,10 +60,22 @@ struct ContentView: View {
             }else{
                 if let snapshot = snapshot{
                    tasks = snapshot.documents.compactMap{ doc in // remove nils with compactMap
-                        return try? doc.data(as: Task.self)
+                       var task = try? doc.data(as: Task.self)
+                       if(task != nil){
+                           task!.id = doc.documentID
+                       }
+//                        return try? doc.data(as: Task.self)
+                       return task
                     }
                 }
             }
         }
     } // fetch
+    
+    private func deleteTask(at indexSeth : IndexSet){
+        indexSeth.forEach { index in
+            let task = tasks[index]
+            db.collection("tasks").document(task.id!).delete()
+        }
+    }
 }
