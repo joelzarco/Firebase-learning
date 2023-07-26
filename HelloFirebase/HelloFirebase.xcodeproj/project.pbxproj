@@ -13,6 +13,7 @@
 		95570A6B2A6DE2210048481B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95570A6A2A6DE2210048481B /* Assets.xcassets */; };
 		95570A6E2A6DE2210048481B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95570A6D2A6DE2210048481B /* Preview Assets.xcassets */; };
 		95570A752A6DE3150048481B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95570A742A6DE3150048481B /* GoogleService-Info.plist */; };
+		95DCA26E2A707FF80015BA7E /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DCA26D2A707FF80015BA7E /* TaskDetailView.swift */; };
 		BE867948C363AF5F0FBFFEFC /* Pods_HelloFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823D1A64269EFD9B54097250 /* Pods_HelloFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		95570A6A2A6DE2210048481B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95570A6D2A6DE2210048481B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		95570A742A6DE3150048481B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95DCA26D2A707FF80015BA7E /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		B5615166C4C18EDFE065476B /* Pods-HelloFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloFirebase.release.xcconfig"; path = "Target Support Files/Pods-HelloFirebase/Pods-HelloFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F493C572E211DBD76E0C0EE1 /* Pods-HelloFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloFirebase.debug.xcconfig"; path = "Target Support Files/Pods-HelloFirebase/Pods-HelloFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				95570A662A6DE2200048481B /* HelloFirebaseApp.swift */,
-				95570A682A6DE2200048481B /* ContentView.swift */,
+				95DCA26F2A7080090015BA7E /* Views */,
 				951042572A6F49C2008059D0 /* Models */,
 				95570A742A6DE3150048481B /* GoogleService-Info.plist */,
 				95570A6A2A6DE2210048481B /* Assets.xcassets */,
@@ -94,6 +96,15 @@
 				95570A6D2A6DE2210048481B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		95DCA26F2A7080090015BA7E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95570A682A6DE2200048481B /* ContentView.swift */,
+				95DCA26D2A707FF80015BA7E /* TaskDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E91FC7C3CA503BA610DCBD89 /* Pods */ = {
@@ -220,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95DCA26E2A707FF80015BA7E /* TaskDetailView.swift in Sources */,
 				95570A692A6DE2200048481B /* ContentView.swift in Sources */,
 				951042592A6F49DA008059D0 /* Task.swift in Sources */,
 				95570A672A6DE2200048481B /* HelloFirebaseApp.swift in Sources */,

@@ -17,23 +17,30 @@ struct ContentView: View {
     @State private var tasks : [Task] = []
     
     var body: some View {
-        VStack {
-            TextField("Enter task", text: $title)
-                .textFieldStyle(.roundedBorder)
-            Button("Save"){  // this whole process will be moved to view model
-                let task = Task(title: title)
-                saveTask(task: task)
-            } // bttn
-            List{
-                ForEach(tasks, id: \.title) { tsk in
-                    Text(tsk.title)
+        NavigationStack{
+            VStack {
+                TextField("Enter task", text: $title)
+                    .textFieldStyle(.roundedBorder)
+                Button("Save"){  // this whole process will be moved to view model
+                    let task = Task(title: title)
+                    saveTask(task: task)
+                } // bttn
+                List{
+                    ForEach(tasks, id: \.id) { tsk in
+                        NavigationLink{
+                            TaskDetailView(task: tsk)
+                        }label: {
+                            Text(tsk.title)
+                        }
+                    }
+                    .onDelete(perform: deleteTask)
                 }
-                .onDelete(perform: deleteTask)
+            } // vs
+            .padding()
+            .onAppear{
+                fetchAllTasks()
             }
-        } // vs
-        .padding()
-        .onAppear{
-            fetchAllTasks()
+            .navigationTitle("TodayTasks")
         }
     }
     
