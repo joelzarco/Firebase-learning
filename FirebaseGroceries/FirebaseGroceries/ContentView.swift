@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isPresented : Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            Text("Main view")
         }
-        .padding()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    isPresented = true
+                }label: {
+                    Image(systemName: "plus")
+                }
+            }
+        } // toolB
+        .sheet(isPresented: $isPresented, content: {
+            AddStoreView()
+        })
+        .navigationTitle("Grocery App")
+        .embedInNavigationView()
     }
 }
 
