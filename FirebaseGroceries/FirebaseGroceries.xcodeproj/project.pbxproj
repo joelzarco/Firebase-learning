@@ -21,6 +21,7 @@
 		95DCA28E2A70B4270015BA7E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 95DCA28D2A70B4270015BA7E /* FirebaseFirestore */; };
 		95DCA2902A70B4270015BA7E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 95DCA28F2A70B4270015BA7E /* FirebaseFirestoreSwift */; };
 		95DCA2922A70B4270015BA7E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 95DCA2912A70B4270015BA7E /* FirebaseStorage */; };
+		95E09E982A7460F300E1523A /* StoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E09E972A7460F300E1523A /* StoreListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		95DCA2802A70B1C10015BA7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95DCA2832A70B1C10015BA7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		95DCA28A2A70B2C30015BA7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95E09E972A7460F300E1523A /* StoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				954CCA062A71DB11009FC9C5 /* AddStoreViewModel.swift */,
+				95E09E972A7460F300E1523A /* StoreListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E09E982A7460F300E1523A /* StoreListViewModel.swift in Sources */,
 				954CCA032A71D2F7009FC9C5 /* Store.swift in Sources */,
 				954CCA052A71D35D009FC9C5 /* FirestoreManager.swift in Sources */,
 				954CCA072A71DB11009FC9C5 /* AddStoreViewModel.swift in Sources */,
