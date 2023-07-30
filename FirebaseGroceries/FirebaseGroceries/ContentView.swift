@@ -10,10 +10,21 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var isPresented : Bool = false
+    @ObservedObject private var storeListVM = StoreListViewModel()
+    
     
     var body: some View {
         VStack{
-            Text("Main view")
+            List(storeListVM.stores, id: \.storeId){ store in
+                VStack(alignment : .leading){
+                    Text(store.name)
+                        .font(.headline).bold()
+                    Text(store.address)
+                        .font(.body)
+                } // vs
+                
+            } //lst
+            .listStyle(PlainListStyle())
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -24,11 +35,14 @@ struct ContentView: View {
                 }
             }
         } // toolB
-        .sheet(isPresented: $isPresented, content: {
+        .sheet(isPresented: $isPresented, onDismiss: { storeListVM.getAll() } ,content: { // onDissmiss sheet, getAll to refresh content
             AddStoreView()
         })
         .navigationTitle("Grocery App")
         .embedInNavigationView()
-    }
+        .onAppear{
+            storeListVM.getAll()
+        }
+    } // someV
 }
 
