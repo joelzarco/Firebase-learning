@@ -16,13 +16,11 @@ struct ContentView: View {
     var body: some View {
         VStack{
             List(storeListVM.stores, id: \.storeId){ store in
-                VStack(alignment : .leading){
-                    Text(store.name)
-                        .font(.headline).bold()
-                    Text(store.address)
-                        .font(.body)
-                } // vs
-                
+                NavigationLink{
+                    StoreItemsListView(store: store)
+                }label: {
+                    StoreCell(store: store)
+                }
             } //lst
             .listStyle(PlainListStyle())
         }
@@ -46,3 +44,16 @@ struct ContentView: View {
     } // someV
 }
 
+
+struct StoreCell: View {
+    let store : StoreViewModel
+    
+    var body: some View {
+        VStack(alignment : .leading){
+            Text(store.name)
+                .font(.headline).bold()
+            Text(store.address)
+                .font(.body)
+        }
+    }
+}

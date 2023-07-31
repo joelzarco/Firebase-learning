@@ -29,8 +29,7 @@ class StoreItemListViewModel : ObservableObject{
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-            }
-            
+            } //sw
         } //frstrMn
     } //fnc
     
