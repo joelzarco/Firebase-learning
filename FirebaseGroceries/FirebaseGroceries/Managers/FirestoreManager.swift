@@ -16,6 +16,32 @@ class FirestoreManager{
         db = Firestore.firestore()
     }
     
+    func updateStore(storeId : String, values : [AnyHashable : Any], completion: @escaping(Result<Store?, Error>) -> Void ){
+        // get ref to store using id
+        let ref = db.collection("stores").document(storeId)
+        
+        ref.updateData( ["items" : FieldValue.arrayUnion( (values["items"] as? [String]) ?? [] ) ] ){ error in
+            if let error = error{
+                completion(.failure(error))
+            }else{
+                // if success get snapshot od document
+                ref.getDocument{ (snapshot, error) in
+                    if let error = error{
+                        completion(.failure(error))
+                    } else{
+                        if let snapshot = snapshot{
+                            var store : Store? = try? snapshot.data(as: Store.self)
+                            if(store != nil){
+                                store!.id = snapshot.documentID
+                                completion(.success(store))
+                            }
+                        }
+                    }
+                }
+            } // else
+        } // updateD
+    } //updateS
+    
     func save(store : Store, completion : @escaping(Result<Store?, Error>) -> Void){
         do{
             let ref = try db.collection("stores").addDocument(from: store)
