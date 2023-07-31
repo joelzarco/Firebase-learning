@@ -13,6 +13,7 @@
 		954CCA052A71D35D009FC9C5 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CCA042A71D35D009FC9C5 /* FirestoreManager.swift */; };
 		954CCA072A71DB11009FC9C5 /* AddStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CCA062A71DB11009FC9C5 /* AddStoreViewModel.swift */; };
 		958164EB2A7316BE003F3642 /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958164EA2A7316BE003F3642 /* AddStoreView.swift */; };
+		95C330FB2A78591F00AB4294 /* StoreItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C330FA2A78591F00AB4294 /* StoreItemListViewModel.swift */; };
 		95DCA27D2A70B1BE0015BA7E /* FirebaseGroceriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DCA27C2A70B1BE0015BA7E /* FirebaseGroceriesApp.swift */; };
 		95DCA27F2A70B1BE0015BA7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DCA27E2A70B1BE0015BA7E /* ContentView.swift */; };
 		95DCA2812A70B1C10015BA7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DCA2802A70B1C10015BA7E /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		954CCA042A71D35D009FC9C5 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		954CCA062A71DB11009FC9C5 /* AddStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreViewModel.swift; sourceTree = "<group>"; };
 		958164EA2A7316BE003F3642 /* AddStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
+		95C330FA2A78591F00AB4294 /* StoreItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemListViewModel.swift; sourceTree = "<group>"; };
 		95DCA2792A70B1BE0015BA7E /* FirebaseGroceries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseGroceries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95DCA27C2A70B1BE0015BA7E /* FirebaseGroceriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGroceriesApp.swift; sourceTree = "<group>"; };
 		95DCA27E2A70B1BE0015BA7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				954CCA062A71DB11009FC9C5 /* AddStoreViewModel.swift */,
 				95E09E972A7460F300E1523A /* StoreListViewModel.swift */,
+				95C330FA2A78591F00AB4294 /* StoreItemListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E09E982A7460F300E1523A /* StoreListViewModel.swift in Sources */,
+				95C330FB2A78591F00AB4294 /* StoreItemListViewModel.swift in Sources */,
 				954CCA032A71D2F7009FC9C5 /* Store.swift in Sources */,
 				954CCA052A71D35D009FC9C5 /* FirestoreManager.swift in Sources */,
 				954CCA072A71DB11009FC9C5 /* AddStoreViewModel.swift in Sources */,

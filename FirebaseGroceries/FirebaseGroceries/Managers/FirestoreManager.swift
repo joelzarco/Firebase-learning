@@ -24,7 +24,7 @@ class FirestoreManager{
             if let error = error{
                 completion(.failure(error))
             }else{
-                // if success get snapshot od document
+                // if success get snapshot of document
                 ref.getDocument{ (snapshot, error) in
                     if let error = error{
                         completion(.failure(error))
