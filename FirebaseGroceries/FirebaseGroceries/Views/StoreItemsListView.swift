@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Combine
+
 
 struct StoreItemsListView: View {
     
-    let store : StoreViewModel
+    @State var store : StoreViewModel
     @StateObject private var storeItemsListVM = StoreItemListViewModel()
+    @State var cancellable : AnyCancellable?
     
     var body: some View {
         VStack{
@@ -19,12 +22,23 @@ struct StoreItemsListView: View {
                 .padding()
             Button("Save"){
                 storeItemsListVM.addItemsToStore(storeId: store.storeId)
+                storeItemsListVM.groceryItemName = ""
             }
             
             List(store.items, id: \.self){ item in
                 Text(item)
             }
+            Spacer()
         } //vs
+        .onAppear{
+            // using combine to update list with new items
+            cancellable = storeItemsListVM.$store.sink { value in
+                if let value = value{
+                    store = value
+                }
+            }
+        }
+        
     }
 }
 
