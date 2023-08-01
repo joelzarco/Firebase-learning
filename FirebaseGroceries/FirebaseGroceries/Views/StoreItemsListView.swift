@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import Combine
-
+//import Combine
 
 struct StoreItemsListView: View {
     
     @State var store : StoreViewModel
     @StateObject private var storeItemsListVM = StoreItemListViewModel()
-    @State var cancellable : AnyCancellable?
+//    @State var cancellable : AnyCancellable?
     
     var body: some View {
         VStack{
@@ -25,20 +24,24 @@ struct StoreItemsListView: View {
                 storeItemsListVM.groceryItemName = ""
             }
             
-            List(store.items, id: \.self){ item in
-                Text(item)
+            if let store = storeItemsListVM.store{ // use store from vm
+                List(store.items, id: \.self){ item in
+                    Text(item)
+                }
             }
             Spacer()
         } //vs
         .onAppear{
             // using combine to update list with new items
-            cancellable = storeItemsListVM.$store.sink { value in
-                if let value = value{
-                    store = value
-                }
-            }
+//            cancellable = storeItemsListVM.$store.sink { value in
+//                if let value = value{
+//                    store = value
+//                }
+            
+//            }
+            // refactored
+            storeItemsListVM.getStoreById(storeId: store.storeId)
         }
-        
     }
 }
 
