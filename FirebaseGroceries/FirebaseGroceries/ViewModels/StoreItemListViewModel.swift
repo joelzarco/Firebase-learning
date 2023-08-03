@@ -35,11 +35,27 @@ class StoreItemListViewModel : ObservableObject{
     private var firestoreManager : FirestoreManager
     var groceryItemName : String = ""
     @Published var store : StoreViewModel?
+    @Published var storeItems : [StoreItemViewModel] = []
     
     var storeItemVS = StoreItemViewState()
     
     init(){
         firestoreManager = FirestoreManager()
+    }
+    
+    func getStoreItemsById(storeId : String){
+        firestoreManager.getStoreItemsBy(storeId: storeId) { result in
+            switch result {
+            case .success(let items):
+                if let items = items{
+                    DispatchQueue.main.async {
+                        self.storeItems = items.map(StoreItemViewModel.init)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func getStoreById(storeId : String){

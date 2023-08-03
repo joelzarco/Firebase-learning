@@ -27,25 +27,23 @@ struct StoreItemsListView: View {
                 .padding()
             Button("Save"){
                 storeItemsListVM.addItemToStore(storeId: store.storeId) { error in
-                    print(error!.localizedDescription)
                     // prints nil in console which means a subcollection was created successfully, still no rendering yet in list
+                    if error == nil{ // to update list of items
+                        storeItemsListVM.getStoreItemsById(storeId: store.storeId)
+                    }
                 }
-//                storeItemsListVM.addItemsToStore(storeId: store.storeId)
                 storeItemsListVM.storeItemVS.name = ""
                 storeItemsListVM.storeItemVS.price = ""
                 storeItemsListVM.storeItemVS.quantity = ""
             }
             
-            if let store = storeItemsListVM.store{ // use store from vm
-                List(store.items, id: \.self){ item in
-                    Text(item)
-                }
+            List(storeItemsListVM.storeItems, id: \.name){ item in
+                Text(item.name)
             }
             Spacer()
         } //vs
         .onAppear{
-            // refactored version
-            storeItemsListVM.getStoreById(storeId: store.storeId)
+            storeItemsListVM.getStoreItemsById(storeId: store.storeId)
             // using combine to update list with new items
 //            cancellable = storeItemsListVM.$store.sink { value in
 //                if let value = value{
