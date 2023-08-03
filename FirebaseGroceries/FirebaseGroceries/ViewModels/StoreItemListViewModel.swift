@@ -57,6 +57,19 @@ class StoreItemListViewModel : ObservableObject{
         }
     }
     
+    func addItemToStore(storeId : String, completion : @escaping (Error?) -> Void){
+        // item properties are already in StoreItemVS but not in preferred model, use extension
+        let storeItem = StoreItem.from(storeItemVS)
+        firestoreManager.updateStore(storeId: storeId, storeItem: storeItem) { result in
+            switch result {
+            case .success( _ ):
+                completion(nil)
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+    
     func addItemsToStore(storeId : String){
         firestoreManager.updateStore(storeId: storeId, values: ["items" : [groceryItemName]]) { result in
             switch result{

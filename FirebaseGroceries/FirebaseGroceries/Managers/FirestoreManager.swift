@@ -33,6 +33,23 @@ class FirestoreManager{
         }
     } // getStoreById
     
+    func updateStore(storeId : String, storeItem : StoreItem, completion : @escaping (Result<Store?, Error>) -> Void){
+        do{
+            let _ = try db.collection("stores").document(storeId).collection("items").addDocument(from: storeItem)  // add subcollection "items"
+            self.getStoreById(storeId: storeId) { result in
+                switch result{
+                case .success(let store):
+                    completion(.success(store))
+                case .failure(let error):
+                    completion(.failure(error))
+                } //sw
+            } // .getS
+        } // do
+        catch let error{
+            completion(.failure(error))
+        }
+    } //
+    
     func updateStore(storeId : String, values : [AnyHashable : Any], completion: @escaping(Result<Store?, Error>) -> Void ){
         // get ref to store using id
         let ref = db.collection("stores").document(storeId)

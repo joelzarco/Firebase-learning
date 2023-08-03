@@ -26,8 +26,14 @@ struct StoreItemsListView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             Button("Save"){
-                storeItemsListVM.addItemsToStore(storeId: store.storeId)
+                storeItemsListVM.addItemToStore(storeId: store.storeId) { error in
+                    print(error!.localizedDescription)
+                    // prints nil in console which means a subcollection was created successfully, still no rendering yet in list
+                }
+//                storeItemsListVM.addItemsToStore(storeId: store.storeId)
                 storeItemsListVM.storeItemVS.name = ""
+                storeItemsListVM.storeItemVS.price = ""
+                storeItemsListVM.storeItemVS.quantity = ""
             }
             
             if let store = storeItemsListVM.store{ // use store from vm
