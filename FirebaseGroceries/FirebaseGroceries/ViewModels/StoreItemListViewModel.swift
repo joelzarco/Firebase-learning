@@ -17,6 +17,10 @@ struct StoreItemViewState{
 struct StoreItemViewModel{
     let storeItem : StoreItem
     
+    var storeItemId : String{
+        storeItem.id ?? ""
+    }
+    
     var name : String{
         storeItem.name
     }
@@ -41,6 +45,13 @@ class StoreItemListViewModel : ObservableObject{
     
     init(){
         firestoreManager = FirestoreManager()
+    }
+    func deleteStoreItem(storeId : String, storeItemId : String){
+        firestoreManager.deleteStoreItem(storeId: storeId, storeItemId: storeItemId) { error in
+            if error == nil{
+                self.getStoreItemsById(storeId: storeId) // to refresh ui
+            }
+        }
     }
     
     func getStoreItemsById(storeId : String){

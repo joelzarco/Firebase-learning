@@ -16,14 +16,22 @@ class FirestoreManager{
         db = Firestore.firestore()
     }
     
+    func deleteStoreItem(storeId : String, storeItemId : String, completion : @escaping (Error?) -> Void){
+        db.collection("stores").document(storeId).collection("items").document(storeItemId).delete{ error in
+            completion(error)
+        }
+    }
+    
     func getStoreItemsBy(storeId : String, completion : @escaping (Result<[StoreItem]?, Error>) -> Void){
         db.collection("stores").document(storeId).collection("items").getDocuments { snapshot, error in
             if let error = error{
                 completion(.failure(error))
             }else{
                 if let snapshot = snapshot{
-                    let items = snapshot.documents.compactMap { doc in
-                        try? doc.data(as: StoreItem.self)
+                    let items : [StoreItem]? = snapshot.documents.compactMap { doc in
+                        var storeItem = try? doc.data(as: StoreItem.self) // to retrieve item id and put into model
+                        storeItem?.id = doc.documentID
+                        return storeItem
                     }
                     completion(.success(items))
                 }
