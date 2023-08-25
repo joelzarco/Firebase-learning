@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>765201548132-b27k56hqq6i05gik9i2tq9ek5v3chvdp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.765201548132-b27k56hqq6i05gik9i2tq9ek5v3chvdp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB38jk6eD4JvvHRWsXdUiE5vMylVlg7sPY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>765201548132</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.appuniversity.org.fireFungi</string>
+	<key>PROJECT_ID</key>
+	<string>firefungi-bb011</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firefungi-bb011.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:765201548132:ios:53c8c94e8171302c94f071</string>
+</dict>
+</plist>
