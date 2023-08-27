@@ -43,12 +43,12 @@ struct LoginView: View {
             Spacer()
            
             
-            NavigationLink(
-                destination: FungiListView(),
-                isActive: $isActive,
-                label: {
-                    EmptyView()
-                })
+//            NavigationLink(
+//                destination: FungiListView(),
+//                isActive: $isActive,
+//                label: {
+//                    EmptyView()
+//                })
             
         }
         .padding()

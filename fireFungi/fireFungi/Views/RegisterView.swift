@@ -13,6 +13,8 @@ struct RegisterView: View {
    
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @StateObject private var registerVM = RegisterViewModel()
         
     var body: some View {
         VStack {
@@ -22,14 +24,16 @@ struct RegisterView: View {
                 .clipShape(Circle())
                 .padding(.bottom, 20)
             
-            TextField("Email", text: $email)
+            TextField("Email", text: $registerVM.email)
                 .padding(.bottom, 20)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $registerVM.password)
             
             Button("Create account") {
-               
-                
+                registerVM.register {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
             .buttonStyle(PrimaryButtonStyle())
             .padding(.top, 30)
@@ -37,8 +41,9 @@ struct RegisterView: View {
             Spacer()
         }
         .padding()
-        .defaultBackgroundView()
-        .navigationTitle("Register")
+//        .defaultBackgroundView()
+        .preferredColorScheme(.dark)
+        .navigationTitle("Sign up")
         .embedInNavigationView()
        
     }

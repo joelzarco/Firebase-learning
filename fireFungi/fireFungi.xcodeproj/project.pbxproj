@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95494A562A9C01B800B7786C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95494A552A9C01B800B7786C /* RegisterViewModel.swift */; };
 		958DABB12A9955050032D965 /* fireFungiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DABB02A9955050032D965 /* fireFungiApp.swift */; };
 		958DABB32A9955050032D965 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DABB22A9955050032D965 /* ContentView.swift */; };
 		958DABB52A9955070032D965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958DABB42A9955070032D965 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95494A552A9C01B800B7786C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		958DABAD2A9955050032D965 /* fireFungi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fireFungi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958DABB02A9955050032D965 /* fireFungiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fireFungiApp.swift; sourceTree = "<group>"; };
 		958DABB22A9955050032D965 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		958DABBF2A99556E0032D965 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				95494A552A9C01B800B7786C /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				958DABCC2A9957850032D965 /* ImagePicker.swift in Sources */,
 				958DABD02A9958100032D965 /* EmptyFungiView.swift in Sources */,
 				958DABB12A9955050032D965 /* fireFungiApp.swift in Sources */,
+				95494A562A9C01B800B7786C /* RegisterViewModel.swift in Sources */,
 				958DABCE2A9957D70032D965 /* PhotoCaptureView.swift in Sources */,
 				958DABD72A99599A0032D965 /* UIImage+Extensions.swift in Sources */,
 				958DABD52A99595E0032D965 /* View+Extensions.swift in Sources */,
