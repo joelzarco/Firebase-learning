@@ -10,55 +10,58 @@ import SwiftUI
 struct LoginView: View {
     
     @State var isPresented: Bool = false
-    @State var isActive: Bool = false
-    
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @EnvironmentObject var appState : AppState
+    @ObservedObject private var loginVM = LoginViewModel()
         
     var body: some View {
-        VStack {
-            Image("mushroom")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(Circle())
-                .padding(.bottom, 20)
+        ZStack {
             
-            TextField("Username", text: $email)
-                .padding(.bottom, 20)
+                VStack{
+                    Image("mushroom")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle())
+                        .padding(.bottom, 20)
+                    
+                    TextField("Username", text: $loginVM.email)
+                        .padding(.bottom, 20)
+                    
+                    SecureField("Password", text: $loginVM.password)
+                       
+                    Spacer()
+                    
+                    Button("Login") {
+                        loginVM.login {
+                            print("login succss")
+                            appState.hasLoggedIn = true
+                        }
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                    .padding(.bottom, 10)
+                    
+                    Button("Create account") {
+                        isPresented = true
+                    }.buttonStyle(SecondaryButtonStyle())
+                   
+                    Spacer()
+                } // vs
+                
+//                VStack{
+//                    if hasLoggedIn{
+//                        FungiListView()
+//                            .transition(.slide)
+//                            .ignoresSafeArea()
+//                    }
+//                } // vs
             
-            SecureField("Password", text: $password)
-               
-            Spacer()
             
-            Button("Login") {
-               
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            .padding(.bottom, 10)
-            
-            Button("Create account") {
-                isPresented = true
-            }.buttonStyle(SecondaryButtonStyle())
-           
-            Spacer()
-           
-            
-//            NavigationLink(
-//                destination: FungiListView(),
-//                isActive: $isActive,
-//                label: {
-//                    EmptyView()
-//                })
-            
-        }
+        } // Zs
         .padding()
-        .defaultBackgroundView()
+        .preferredColorScheme(.dark)
         .sheet(isPresented: $isPresented, content: {
             RegisterView()
         })
-        .navigationTitle("Fungi Finder")
-        .embedInNavigationView()
-    }
+    } // someV
 }
 
 

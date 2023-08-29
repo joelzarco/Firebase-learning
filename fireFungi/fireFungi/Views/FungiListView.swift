@@ -15,6 +15,8 @@ enum SourceType {
 
 struct FungiListView: View {
     
+    @EnvironmentObject var appState : AppState
+    
     @State private var showImagePicker: Bool = false
     @State private var image: Image? = nil
     @State private var originalImage: UIImage? = nil

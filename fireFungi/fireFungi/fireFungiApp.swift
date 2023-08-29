@@ -8,6 +8,13 @@
 import SwiftUI
 import FirebaseCore
 
+class AppState : ObservableObject{
+    @Published var hasLoggedIn : Bool
+    
+    init(hasLoggedIn: Bool) {
+        self.hasLoggedIn = hasLoggedIn
+    }
+}
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -22,14 +29,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct fireFungiApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-
+    @ObservedObject var appState = AppState(hasLoggedIn: false)
+    
   var body: some Scene {
     WindowGroup {
-      NavigationView {
-//        ContentView()
-          LoginView()
-      }
+        
+          if appState.hasLoggedIn{
+              FungiListView()
+                  .environmentObject(appState)
+          }else{
+              LoginView()
+                  .environmentObject(appState)
+          }
     }
   }
 }
