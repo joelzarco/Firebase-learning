@@ -24,19 +24,42 @@ struct FungiListView: View {
     @State private var showActionSheet: Bool = false
     @State private var sourceType: SourceType = .photoLibrary
     
+    @StateObject private var listVM = ListViewModel()
+    
+    private func saveFungi(){
+        if let originalImage = originalImage{
+            if let resizedImage = originalImage.resized(width: 1024){ // def in ext
+                if let data = resizedImage.pngData(){ // Returns a data object that contains the specified image in PNG format.
+                    listVM.uploadPhoto(data: data) { url in
+                        if let url = url{
+                            print(url)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     var body: some View {
-        ZStack {
-            Text("Display List of Fungi")
-                .font(.largeTitle)
-           
-        }.navigationTitle("Fungi")
-        .navigationBarItems(trailing: Button(action: {
-            // show camera
-            showActionSheet = true
-        }, label: {
-            Image(systemName: "camera")
-                .font(.title)
-        })
+        VStack {
+            VStack{
+                Button(){
+                    showActionSheet = true
+                }label: {
+                    Image(systemName: "camera")
+                        .font(.title)
+                }
+                Text("Display List of Fungi")
+                    .font(.largeTitle)
+                
+                if image != nil{
+                    PhotoPreviewView(image: $image, name: $name, save: {
+                        saveFungi()
+                    })
+                        .shadow(radius: 5)
+                }
+            } // vs
+        } // vs
         .actionSheet(isPresented: $showActionSheet, content: {
             ActionSheet(title: Text("Select"), message: nil, buttons: [
                 .default(Text("Photo Library")) {
@@ -50,9 +73,6 @@ struct FungiListView: View {
                 .cancel()
             ])
         })
-        
-        
-        )
         .sheet(isPresented: $showImagePicker, content: {
             PhotoCaptureView(showImagePicker: $showImagePicker, image: $image, originalImage: $originalImage, sourceType: sourceType)
         })
@@ -91,7 +111,6 @@ struct PhotoPreviewView: View {
         .cornerRadius(10)
         .offset(y: 0)
         .padding()
-        
     }
 }
 
