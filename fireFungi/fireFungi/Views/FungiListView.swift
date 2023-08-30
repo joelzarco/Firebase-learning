@@ -27,6 +27,7 @@ struct FungiListView: View {
     var body: some View {
         ZStack {
             Text("Display List of Fungi")
+                .font(.largeTitle)
            
         }.navigationTitle("Fungi")
         .navigationBarItems(trailing: Button(action: {
