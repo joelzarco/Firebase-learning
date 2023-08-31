@@ -26,6 +26,7 @@ struct FungiListView: View {
     
     @StateObject private var listVM = ListViewModel()
     
+    // remember to change security rules in cloud firestore depending on prod/test mode
     private func saveFungi(){
         if let originalImage = originalImage{
             if let resizedImage = originalImage.resized(width: 1024){ // def in ext
@@ -33,6 +34,10 @@ struct FungiListView: View {
                     listVM.uploadPhoto(data: data) { url in
                         if let url = url{
                             print(url)
+                            listVM.save(name: name, url: url) { error in
+                                print(error?.localizedDescription)
+                                image = nil
+                            }
                         }
                     }
                 }

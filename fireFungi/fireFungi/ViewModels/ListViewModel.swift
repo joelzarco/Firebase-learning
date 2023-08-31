@@ -8,10 +8,28 @@
 import Foundation
 import Firebase
 import FirebaseStorage
+import FirebaseFirestoreSwift
 
 class ListViewModel : ObservableObject{
     
     let storage = Storage.storage()
+    let db = Firestore.firestore()
+    
+    
+    func save(name : String, url : URL, completion : (Error?) -> Void){
+        
+        guard let currrentUser = Auth.auth().currentUser else{
+            return
+        }
+        
+        do{
+            let _ = try db.collection("fungi").addDocument(from: Fungi(name: name, url: url.absoluteString, userId: currrentUser.uid))
+            completion(nil)
+        } catch let error{
+            completion(error)
+        }
+        
+    }
     
     func uploadPhoto(data : Data, completion : @escaping (URL?) -> Void){
         // on succes gives back url of uploaded image
