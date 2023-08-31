@@ -15,6 +15,33 @@ class ListViewModel : ObservableObject{
     let storage = Storage.storage()
     let db = Firestore.firestore()
     
+    @Published var fungi : [FungiViewModel] = []
+    
+    func getAllFungiForUser(){
+        guard let currentUser = Auth.auth().currentUser else{
+            return
+        }
+        db.collection("fungi").whereField("userId", isEqualTo: currentUser.uid).getDocuments{ (snap, err) in
+            if let err = err{
+                print(err.localizedDescription)
+            }else{
+                if let snap = snap{
+                    let fungi : [FungiViewModel] = snap.documents.compactMap { doc in
+                        var fungi = try? doc.data(as: Fungi.self)
+                        fungi?.id = doc.documentID
+                        if let fungi = fungi{
+                            return FungiViewModel(fungi: fungi)
+                        }
+                        return nil
+                    }
+                    DispatchQueue.main.async {
+                        self.fungi = fungi
+                    }
+                }
+            }
+        }
+    }
+    
     
     func save(name : String, url : URL, completion : (Error?) -> Void){
         
