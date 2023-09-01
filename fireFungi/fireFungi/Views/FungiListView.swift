@@ -36,7 +36,12 @@ struct FungiListView: View {
                         if let url = url{
                             print(url)
                             listVM.save(name: name, url: url) { error in
-                                print(error?.localizedDescription)
+                                if let error = error{
+                                    print(error.localizedDescription)
+                                }else{
+                                    // after fungi being successfully saved, refresh list
+                                    listVM.getAllFungiForUser()
+                                }
                                 image = nil
                             }
                         }
@@ -62,6 +67,9 @@ struct FungiListView: View {
                     List(listVM.fungi, id: \.fungiId) { fun in
                         funCell(fun: fun)
                     }
+                }else if (listVM.fungi.count == 0){
+                    // for recently signUp users
+                    EmptyFungiView()
                 }
                 
                 if image != nil{
