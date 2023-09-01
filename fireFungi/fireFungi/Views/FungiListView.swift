@@ -60,16 +60,7 @@ struct FungiListView: View {
                 
                 if (listVM.fungi.count > 0){
                     List(listVM.fungi, id: \.fungiId) { fun in
-                        VStack{
-                            let url = URL(string: fun.photoUrl)
-                            
-                            URLImage(url!) { image, info in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            Text(fun.name)
-                                .font(.body)
-                        }
+                        funCell(fun: fun)
                     }
                 }
                 
@@ -79,8 +70,8 @@ struct FungiListView: View {
                     })
                         .shadow(radius: 5)
                 }
-            } // vs
-        } // vs
+            } // vs sub
+        } // vs main
         .actionSheet(isPresented: $showActionSheet, content: {
             ActionSheet(title: Text("Select"), message: nil, buttons: [
                 .default(Text("Photo Library")) {
@@ -152,3 +143,20 @@ struct FungiCell: View {
     }
 }
 
+
+struct funCell: View {
+    let fun : FungiViewModel
+    var body: some View {
+        VStack{
+            let url = URL(string: fun.photoUrl)
+            
+            URLImage(url!) { image, info in
+                image.resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            Text(fun.name)
+                .font(.body)
+        }
+    }
+}
