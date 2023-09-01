@@ -10,20 +10,36 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestoreSwift
 
+enum LoadingState{
+    case idle
+    case loading
+    case success
+    case failure
+}
+
 class ListViewModel : ObservableObject{
     
     let storage = Storage.storage()
     let db = Firestore.firestore()
     
     @Published var fungi : [FungiViewModel] = []
+    @Published var loadingState : LoadingState = .idle
     
     func getAllFungiForUser(){
+        
+        DispatchQueue.main.async {
+            self.loadingState = .loading
+        }
+        
         guard let currentUser = Auth.auth().currentUser else{
             return
         }
         db.collection("fungi").whereField("userId", isEqualTo: currentUser.uid).getDocuments{ (snap, err) in
             if let err = err{
                 print(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingState = .failure
+                }
             }else{
                 if let snap = snap{
                     let fungi : [FungiViewModel] = snap.documents.compactMap { doc in
@@ -36,6 +52,7 @@ class ListViewModel : ObservableObject{
                     }
                     DispatchQueue.main.async {
                         self.fungi = fungi
+                        self.loadingState = .success
                     }
                 }
             }

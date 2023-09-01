@@ -29,6 +29,9 @@ struct FungiListView: View {
     
     // remember to change security rules in cloud firestore depending on prod/test mode
     private func saveFungi(){
+        DispatchQueue.main.async {
+            listVM.loadingState = .loading
+        }
         if let originalImage = originalImage{
             if let resizedImage = originalImage.resized(width: 1024){ // def in ext
                 if let data = resizedImage.pngData(){ // Returns a data object that contains the specified image in PNG format.
@@ -41,6 +44,9 @@ struct FungiListView: View {
                                 }else{
                                     // after fungi being successfully saved, refresh list
                                     listVM.getAllFungiForUser()
+                                    DispatchQueue.main.async {
+                                        listVM.loadingState = .success
+                                    }
                                 }
                                 image = nil
                             }
@@ -67,7 +73,7 @@ struct FungiListView: View {
                     List(listVM.fungi, id: \.fungiId) { fun in
                         funCell(fun: fun)
                     }
-                }else if (listVM.fungi.count == 0){
+                }else if (listVM.loadingState == .success && listVM.fungi.count == 0){
                     // for recently signUp users
                     EmptyFungiView()
                 }
@@ -78,6 +84,8 @@ struct FungiListView: View {
                     })
                         .shadow(radius: 5)
                 }
+                
+                LoadingView(loadingState: listVM.loadingState)
             } // vs sub
         } // vs main
         .actionSheet(isPresented: $showActionSheet, content: {
