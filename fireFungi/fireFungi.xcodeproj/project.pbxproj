@@ -30,6 +30,8 @@
 		958DABE02A995F510032D965 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958DABDF2A995F510032D965 /* FirebaseFirestoreSwift */; };
 		958DABE22A995F510032D965 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 958DABE12A995F510032D965 /* FirebaseStorage */; };
 		95DF541E2AA14A5F00D76EBB /* FungiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DF541D2AA14A5F00D76EBB /* FungiViewModel.swift */; };
+		95DF54212AA16B7B00D76EBB /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 95DF54202AA16B7B00D76EBB /* URLImage */; };
+		95DF54232AA16B7B00D76EBB /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 95DF54222AA16B7B00D76EBB /* URLImageStore */; };
 		95F774FA2A9FE18A00BE9D27 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F774F92A9FE18A00BE9D27 /* ListViewModel.swift */; };
 		95F774FC2AA0230B00BE9D27 /* Fungi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F774FB2AA0230B00BE9D27 /* Fungi.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,8 @@
 				958DABDC2A995F510032D965 /* FirebaseAuth in Frameworks */,
 				958DABE22A995F510032D965 /* FirebaseStorage in Frameworks */,
 				958DABDE2A995F510032D965 /* FirebaseFirestore in Frameworks */,
+				95DF54212AA16B7B00D76EBB /* URLImage in Frameworks */,
+				95DF54232AA16B7B00D76EBB /* URLImageStore in Frameworks */,
 				958DABE02A995F510032D965 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +183,8 @@
 				958DABDD2A995F510032D965 /* FirebaseFirestore */,
 				958DABDF2A995F510032D965 /* FirebaseFirestoreSwift */,
 				958DABE12A995F510032D965 /* FirebaseStorage */,
+				95DF54202AA16B7B00D76EBB /* URLImage */,
+				95DF54222AA16B7B00D76EBB /* URLImageStore */,
 			);
 			productName = fireFungi;
 			productReference = 958DABAD2A9955050032D965 /* fireFungi.app */;
@@ -210,6 +216,7 @@
 			mainGroup = 958DABA42A9955050032D965;
 			packageReferences = (
 				958DABDA2A995F510032D965 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				95DF541F2AA16B7B00D76EBB /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 958DABAE2A9955050032D965 /* Products */;
 			projectDirPath = "";
@@ -472,6 +479,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		95DF541F2AA16B7B00D76EBB /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -494,6 +509,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 958DABDA2A995F510032D965 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		95DF54202AA16B7B00D76EBB /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95DF541F2AA16B7B00D76EBB /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		95DF54222AA16B7B00D76EBB /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95DF541F2AA16B7B00D76EBB /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import URLImage
 
 enum SourceType {
     case photoLibrary
@@ -57,6 +58,21 @@ struct FungiListView: View {
                 Text("Display List of Fungi")
                     .font(.largeTitle)
                 
+                if (listVM.fungi.count > 0){
+                    List(listVM.fungi, id: \.fungiId) { fun in
+                        VStack{
+                            let url = URL(string: fun.photoUrl)
+                            
+                            URLImage(url!) { image, info in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            Text(fun.name)
+                                .font(.body)
+                        }
+                    }
+                }
+                
                 if image != nil{
                     PhotoPreviewView(image: $image, name: $name, save: {
                         saveFungi()
@@ -82,7 +98,7 @@ struct FungiListView: View {
             PhotoCaptureView(showImagePicker: $showImagePicker, image: $image, originalImage: $originalImage, sourceType: sourceType)
         })
     .onAppear(perform: {
-        
+        listVM.getAllFungiForUser()
     })
     }
 }
